@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   Object.entries(spawnButtons).forEach(([id, spawner]) => {
     document.getElementById(id)?.addEventListener('click', () => {
-      spawner(render.canvas.width / 2, 50);
+      spawner(render.canvas.width / 2, 500);
     });
   });
 

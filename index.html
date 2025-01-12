@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html w-tid="0"><head w-tid="1">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style>html{min-height:100%}.ctxmenu{position:fixed;border:1px solid #999;padding:2px 0;box-shadow:#aaa 3px 3px 3px;background:#fff;margin:0;z-index:9999;overflow-y:auto;font:15px Verdana, sans-serif;box-sizing:border-box}.ctxmenu li{margin:1px 0;display:block;position:relative;user-select:none}.ctxmenu li.heading{font-weight:bold;margin-left:-5px}.ctxmenu li span{display:block;padding:2px 20px;cursor:default}.ctxmenu li a{color:inherit;text-decoration:none}.ctxmenu li.icon{padding-left:15px}.ctxmenu img.icon{position:absolute;width:18px;left:10px;top:2px}.ctxmenu li.disabled{color:#ccc}.ctxmenu li.divider{border-bottom:1px solid #aaa;margin:5px 0}.ctxmenu li.interactive:hover{background:rgba(0, 0, 0, .1)}.ctxmenu li.submenu::after{content:"";position:absolute;display:block;top:0;bottom:0;right:.4em;margin:auto .1rem auto auto;border-right:1px solid #000;border-top:1px solid #000;transform:rotate(45deg);width:.3rem;height:.3rem}.ctxmenu li.submenu.disabled::after{border-color:#ccc}</style>
+<link rel="stylesheet" href="a_data/fonts.css">
+<link rel="stylesheet" href="a_data/ctxmenu.css">
+
+
+
+  <meta charset="utf-8" w-tid="3">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" w-tid="4">
+  <title w-tid="5">Physics Playground+</title>
+  <script src="a_data/matter.min.js" w-tid="6"></script>
+  <link rel="stylesheet" href="a_data/styles.css" w-tid="7">
+</head>
+<body w-tid="8">
+  <div class="menu" id="menu" w-tid="9" style="display: flex;">
+    <canvas width="100%" height="100%" w-tid="10"></canvas>
+    <h1 w-tid="11">Physics Playground+</h1>
+    <button class="play-button" id="play" w-tid="12">Play Now</button>
+    <button class="play-button" id="mod-manager" w-tid="13" style="opacity: 1; pointer-events: auto;" title="Open Mod Manager">Mod Manager</button>  
+  <canvas width="1256" height="1224" style="background: transparent 0% 0% / contain;"></canvas></div>
+
+  <div class="mod-menu" style="display: none" w-tid="14">
+    <h1 w-tid="15">Mod Manager</h1>
+    <button class="play-button" id="back-to-menu" w-tid="16">Back to Menu</button>
+    <div class="mod-list" w-tid="17">
+      <div class="mod-item" w-tid="18">
+        <div class="mod-icon" w-tid="19">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="20">
+            <rect x="4" y="12" width="16" height="8" w-tid="21"></rect>
+            <rect x="6" y="4" width="12" height="8" w-tid="22"></rect>
+            <line x1="10" y1="12" x2="14" y2="12" w-tid="23"></line>
+          </svg>
+        </div>
+        <div class="mod-info" w-tid="24">
+          <h3 w-tid="25">Furniture Mod</h3>
+          <p w-tid="26">Adds furniture items like chairs, tables, and 
+decorative vases. Perfect for creating cozy scenes or testing physics 
+interactions with household items.</p>
+        </div>
+        <button class="mod-button" data-mod-id="furniture" w-tid="27">Enable</button>
+      </div>
+      <div class="mod-item" w-tid="28">
+        <div class="mod-icon" w-tid="29">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="30">
+            <rect x="4" y="4" width="16" height="16" w-tid="31"></rect>
+            <line x1="4" y1="12" x2="20" y2="12" w-tid="32"></line>
+            <line x1="12" y1="4" x2="12" y2="20" w-tid="33"></line>
+          </svg>
+        </div>
+        <div class="mod-info" w-tid="34">
+          <h3 w-tid="35">Building Blocks Mod</h3>
+          <p w-tid="36">Adds construction materials like wooden planks, 
+metal sheets, and concrete blocks. Perfect for building structures and 
+testing physics with realistic building materials.</p>
+        </div>
+        <button class="mod-button" data-mod-id="building" w-tid="37">Enable</button>
+      </div>
+      <div class="mod-item" w-tid="38">
+        <div class="mod-icon" w-tid="39">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="40">
+            <circle cx="12" cy="12" r="8" w-tid="41"></circle>
+            <line x1="12" y1="8" x2="12" y2="16" w-tid="42"></line>
+            <line x1="8" y1="12" x2="16" y2="12" w-tid="43"></line>
+          </svg>
+        </div>
+        <div class="mod-info" w-tid="44">
+          <h3 w-tid="45">Power Systems Mod</h3>
+          <p w-tid="46">Adds mechanical components like gears, pistons, and motors. Create complex machines and mechanical systems.</p>
+        </div>
+        <button class="mod-button" data-mod-id="power" w-tid="47">Enable</button>
+      </div>
+      <div class="mod-item" w-tid="48">
+        <div class="mod-icon" w-tid="49">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="50">
+            <path d="M12 2L2 22h20L12 2z" w-tid="51"></path>
+            <path d="M12 6l-6 12h12L12 6z" w-tid="52"></path>
+            <circle cx="12" cy="17" r="1" w-tid="53"></circle>
+          </svg>
+        </div>
+        <div class="mod-info" w-tid="54">
+          <h3 w-tid="55">Hazards Mod</h3>
+          <p w-tid="56">Adds dangerous and explosive elements like TNT, 
+spikes, and acid pools. Perfect for creating challenging obstacle 
+courses and destruction scenarios.</p>
+        </div>
+        <button class="mod-button" data-mod-id="hazards" w-tid="57">Enable</button>
+      </div>
+    </div>
+    <button class="add-mod-button play-button" w-tid="58">Add Custom Mod</button>
+    <div class="add-mod-form" w-tid="59">
+  <input type="text" id="mod-name" placeholder="Mod Name">
+  <textarea id="mod-description" placeholder="Mod Description"></textarea>
+  <textarea id="mod-code" placeholder="Custom JavaScript Code
+Example:
+// x, y: spawn position
+// Matter: physics engine
+// world: physics world
+const body = Matter.Bodies.circle(x, y, 20, {
+  render: {
+    fillStyle: '#FFFFFF',
+    strokeStyle: '#000000',
+    lineWidth: 3
+  }
+});
+Matter.Composite.add(world, body);"></textarea>
+  <div class="form-buttons">
+    <button id="save-mod">Save Mod</button>
+    <button id="cancel-mod">Cancel</button>
+  </div>
+</div>
+  </div>
+
+  <div class="controls" w-tid="65" style="display: none;">
+    <div class="spawn-categories" w-tid="66">
+      <button class="spawn-category active" data-category="blocks" w-tid="67">Blocks</button>
+      <button class="spawn-category" data-category="life" w-tid="68">Life</button>
+      <button class="spawn-category" data-category="props" w-tid="69">Props</button>
+      <button class="spawn-category" data-category="furniture" w-tid="70" style="display: none;">Furniture</button>
+      <button class="spawn-category" data-category="building" w-tid="71" style="display: none;">Building</button>
+      <button class="spawn-category" data-category="power" w-tid="72" style="display: none;">Power</button>
+    </div>
+    
+    <div class="spawn-items" w-tid="73">
+      <div class="category-items" data-category="blocks" w-tid="74">
+        <button class="spawn-item" id="circle" w-tid="75">
+          <div class="item-icon" w-tid="76">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="77">
+              <circle cx="12" cy="12" r="10" w-tid="78"></circle>
+            </svg>
+          </div>
+          Circle Block
+        </button>
+        <button class="spawn-item" id="rectangle" w-tid="79">
+          <div class="item-icon" w-tid="80">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="81">
+              <rect x="2" y="4" width="20" height="16" w-tid="82"></rect>
+            </svg>
+          </div>
+          Rectangle Block
+        </button>
+        <button class="spawn-item" id="triangle" w-tid="83">
+          <div class="item-icon" w-tid="84">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="85">
+              <path d="M12 3 L22 20 L2 20 Z" w-tid="86"></path>
+            </svg>
+          </div>
+          Triangle Block
+        </button>
+        <button class="spawn-item" id="hexagon" w-tid="87">
+          <div class="item-icon" w-tid="88">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="89">
+              <path d="M12 2 L20 7 L20 17 L12 22 L4 17 L4 7 Z" w-tid="90"></path>
+            </svg>
+          </div>
+          Hexagon Block
+        </button>
+        <button class="spawn-item" id="octagon" w-tid="91">
+          <div class="item-icon" w-tid="92">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="93">
+              <path d="M8 2 L16 2 L22 8 L22 16 L16 22 L8 22 L2 16 L2 8 Z" w-tid="94"></path>
+            </svg>
+          </div>
+          Octagon Block
+        </button>
+        <button class="spawn-item" id="star" w-tid="95">
+          <div class="item-icon" w-tid="96">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="97">
+              <path d="M12 2 L15 9 L22 9 L16 14 L19 21 L12 17 L5 21 L8 14 L2 9 L9 9 Z" w-tid="98"></path>
+            </svg>
+          </div>
+          Star Block
+        </button>
+      </div>
+      <div class="category-items" data-category="life" style="display: none;" w-tid="99">
+        <button class="spawn-item" id="ragdoll" w-tid="100">
+          <div class="item-icon" w-tid="101">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="102">
+              <circle cx="12" cy="6" r="4" w-tid="103"></circle>
+              <path d="M12 10 L12 16 M8 20 L12 16 L16 20 M8 13 L12 16 L16 13" w-tid="104"></path>
+            </svg>
+          </div>
+          R15 Human
+        </button>
+        <button class="spawn-item" id="bird" w-tid="105">
+          <div class="item-icon" w-tid="106">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="107">
+              <path d="M22 16 L12 12 L2 16 M12 12 L12 3" w-tid="108"></path>
+            </svg>
+          </div>
+          Flying Bird
+        </button>
+        <button class="spawn-item" id="snake" w-tid="109">
+          <div class="item-icon" w-tid="110">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="111">
+              <path d="M2 12 Q7 12 7 16 T12 16 T17 12 T22 12" w-tid="112"></path>
+            </svg>
+          </div>
+          Snake
+        </button>
+      </div>
+      <div class="category-items" data-category="props" style="display: none;" w-tid="113">
+        <button class="spawn-item" id="barrel" w-tid="114">
+          <div class="item-icon" w-tid="115">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="116">
+              <path d="M4 6 Q12 4 20 6 L20 18 Q12 20 4 18 Z M4 12 Q12 10 20 12" w-tid="117"></path>
+            </svg>
+          </div>
+          Barrel
+        </button>
+        <button class="spawn-item" id="crate" w-tid="118">
+          <div class="item-icon" w-tid="119">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="120">
+              <rect x="4" y="4" width="16" height="16" w-tid="121"></rect>
+              <line x1="4" y1="8" x2="20" y2="8" w-tid="122"></line>
+              <line x1="4" y1="16" x2="20" y2="16" w-tid="123"></line>
+            </svg>
+          </div>
+          Crate
+        </button>
+        <button class="spawn-item" id="balloon" w-tid="124">
+          <div class="item-icon" w-tid="125">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="126">
+              <path d="M12 20 L12 12 M7 12 A5 5 0 0 1 17 12 A5 8 0 0 1 7 12" w-tid="127"></path>
+            </svg>
+          </div>
+          Balloon
+        </button>
+        <button class="spawn-item" id="boulder" w-tid="128">
+          <div class="item-icon" w-tid="129">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="130">
+              <path d="M3 12 L7 5 L13 3 L19 7 L21 13 L17 19 L11 21 L5 17 Z" w-tid="131"></path>
+            </svg>
+          </div>
+          Boulder
+        </button>
+        <button class="spawn-item" id="spring" w-tid="132">
+          <div class="item-icon" w-tid="133">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="134">
+              <line x1="8" y1="4" x2="16" y2="4" w-tid="135"></line>
+              <path d="M12 4 L12 8 L8 12 L16 16 L12 20" w-tid="136"></path>
+              <line x1="8" y1="20" x2="16" y2="20" w-tid="137"></line>
+            </svg>
+          </div>
+          Spring
+        </button>
+      </div>
+      <div class="category-items" data-category="furniture" style="display: none;" w-tid="138">
+        <button class="spawn-item" id="chair" w-tid="139">
+          <div class="item-icon" w-tid="140">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="141">
+              <path d="M6 12 L18 12 L18 20 L16 20 L16 14 M8 20 L8 14" w-tid="142"></path>
+              <rect x="6" y="6" width="12" height="6" w-tid="143"></rect>
+              <line x1="6" y1="6" x2="6" y2="2" w-tid="144"></line>
+              <line x1="18" y1="6" x2="18" y2="2" w-tid="145"></line>
+            </svg>
+          </div>
+          Chair
+        </button>
+        <button class="spawn-item" id="table" w-tid="146">
+          <div class="item-icon" w-tid="147">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="148">
+              <rect x="4" y="8" width="16" height="4" w-tid="149"></rect>
+              <line x1="6" y1="12" x2="6" y2="20" w-tid="150"></line>
+              <line x1="18" y1="12" x2="18" y2="20" w-tid="151"></line>
+            </svg>
+          </div>
+          Table
+        </button>
+        <button class="spawn-item" id="vase" w-tid="152">
+          <div class="item-icon" w-tid="153">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="154">
+              <path d="M8 4 L16 4 C16 8 20 10 20 15 A8 8 0 0 1 4 15 C4 10 8 8 8 4" w-tid="155"></path>
+            </svg>
+          </div>
+          Vase
+        </button>
+      </div>
+      <div class="category-items" data-category="building" style="display: none;" w-tid="156">
+        <button class="spawn-item" id="woodPlank" w-tid="157">
+          <div class="item-icon" w-tid="158">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="159">
+              <rect x="2" y="8" width="20" height="8" w-tid="160"></rect>
+              <line x1="2" y1="12" x2="22" y2="12" w-tid="161"></line>
+            </svg>
+          </div>
+          Wood Plank
+        </button>
+        <button class="spawn-item" id="metalSheet" w-tid="162">
+          <div class="item-icon" w-tid="163">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="164">
+              <rect x="4" y="6" width="16" height="12" w-tid="165"></rect>
+              <line x1="4" y1="10" x2="20" y2="10" w-tid="166"></line>
+              <line x1="4" y1="14" x2="20" y2="14" w-tid="167"></line>
+            </svg>
+          </div>
+          Metal Sheet
+        </button>
+        <button class="spawn-item" id="concreteBlock" w-tid="168">
+          <div class="item-icon" w-tid="169">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="170">
+              <rect x="4" y="4" width="16" height="16" w-tid="171"></rect>
+              <path d="M4 4 L20 20 M4 20 L20 4" w-tid="172"></path>
+            </svg>
+          </div>
+          Concrete Block
+        </button>
+      </div>
+      <div class="category-items" data-category="power" style="display: none;" w-tid="173">
+        <button class="spawn-item" id="gear" w-tid="174">
+          <div class="item-icon" w-tid="175">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="176">
+              <circle cx="12" cy="12" r="8" w-tid="177"></circle>
+              <path d="M12 4 L14 6 L10 6 Z M20 12 L18 14 L18 10 Z M12 20 L10 18 L14 18 Z M4 12 L6 10 L6 14 Z" w-tid="178"></path>
+            </svg>
+          </div>
+          Gear
+        </button>
+        <button class="spawn-item" id="piston" w-tid="179">
+          <div class="item-icon" w-tid="180">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="181">
+              <rect x="6" y="4" width="12" height="16" w-tid="182"></rect>
+              <rect x="8" y="8" width="8" height="8" w-tid="183"></rect>
+            </svg>
+          </div>
+          Piston
+        </button>
+        <button class="spawn-item" id="motor" w-tid="184">
+          <div class="item-icon" w-tid="185">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" w-tid="186">
+              <circle cx="12" cy="12" r="8" w-tid="187"></circle>
+              <path d="M12 12 L16 12" w-tid="188"></path>
+              <circle cx="12" cy="12" r="2" w-tid="189"></circle>
+            </svg>
+          </div>
+          Motor
+        </button>
+      </div>
+    </div>
+    <button class="spawn-item" id="reset" w-tid="190">Reset Scene</button>
+    <button class="back-button" id="back-to-menu-game" w-tid="191">Back to Menu</button>
+  </div>
+
+  <div id="canvas-container" w-tid="192" style="display: none;"><canvas width="956" height="1224" style="background: transparent 0% 0% / contain;"></canvas></div>
+
+  <script type="module" src="a_data/matterSetup.js" w-tid="193"></script>
+  <script type="module" src="a_data/menuPhysics.js" w-tid="194"></script>
+  <script type="module" src="a_data/objectSpawners.js" w-tid="195"></script>
+  <script type="module" src="a_data/modManager.js" w-tid="196"></script>
+  <script type="module" src="a_data/main.js" w-tid="197"></script>
+
+</body></html>
